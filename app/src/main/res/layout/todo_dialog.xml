@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+            <variable
+                name="todoViewModel"
+                type="com.example.todoapp.roomDb.ToDoViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#EFEAE2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/hardcode_create"
+            android:text="CREATE"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="#F6AE42" />
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/icon_cancel"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:src="@drawable/baseline_close_24" />-->
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/til_title"
+            app:layout_constraintTop_toBottomOf="@+id/hardcode_create"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_margin="5dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="To-Do Title"
+                android:id="@+id/et_title"
+                android:inputType="textCapWords"
+                android:text="@={todoViewModel.inputTitle}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/til_description"
+            app:layout_constraintTop_toBottomOf="@id/til_title"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_margin="5dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="To-Do Description"
+                android:id="@+id/et_description"
+                android:inputType="textCapWords"
+                android:maxLines="6"
+                android:text="@={todoViewModel.inputDescription}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="4dp"
+            android:onClick="@{() -> todoViewModel.cancelDialog()}"
+            android:text="CANCEL"
+            app:cornerRadius="5dp"
+            app:layout_constraintRight_toLeftOf="@+id/btn_ok"
+            app:layout_constraintTop_toBottomOf="@id/til_description" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_ok"
+            android:text="OK"
+            android:layout_margin="5dp"
+            app:cornerRadius="5dp"
+            app:layout_constraintTop_toBottomOf="@id/til_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{() -> todoViewModel.insertOrUpdateToDo()}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
