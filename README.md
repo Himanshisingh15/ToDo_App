@@ -14,9 +14,8 @@ Todo App is a simple Android application designed to help users keep track of th
 **Persistent Storage:** Tasks are stored locally using Room Database, ensuring data persistence even after app restarts.
 
 # Installation
-Clone the repository to your local machine.
-Open the project in Android Studio.
-Build and run the app on your Android device or emulator.
+Clone the repository to your local machine -
+https://github.com/Himanshisingh15/ToDo_App.git
 
 # Usage
 Upon launching the app, you will be presented with a list of existing tasks (if any).
